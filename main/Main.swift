@@ -1,0 +1,22 @@
+var tft = TFT_eSPI(Int16(TFT_WIDTH), Int16(TFT_HEIGHT))
+
+let FLAG_X: Int32 = 10
+let FLAG_Y: Int32 = 10
+let FLAG_W: Int32 = 70
+let FLAG_H: Int32 = 50
+var loopcount = Int32(0)
+
+@_cdecl("setup")
+func setup() {
+    print("Hello, World!")
+    tft.`init`()
+    tft.setRotation(1)
+}
+
+@_cdecl("loop")
+func loop() {
+    tft.fillScreen(UInt32(TFT_BLACK))
+    waveFlag(.enby, on: &tft, flagX: FLAG_X, flagY: FLAG_Y, width: FLAG_W, height: FLAG_H, xmod: 0.1, sinmod: 3, loopcount: loopcount)
+	delay(100)
+	loopcount += 5
+}
