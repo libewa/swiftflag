@@ -40,7 +40,7 @@ endforeach()
 target_compile_options(${COMPONENT_LIB} PUBLIC "$<$<COMPILE_LANGUAGE:Swift>:SHELL:
         -target riscv32-none-none-eabi
         -Xfrontend -function-sections -enable-experimental-feature Embedded -wmo -parse-as-library -Osize
-        -Xcc ${march_flag} -Xcc ${mabi_flag} -Xcc -fno-pic -Xcc -fno-pie -Xcc -fno-exceptions -Xcc -fno-rtti -Xcc -Wno-misleading-indentation
+        -Xcc ${march_flag} -Xcc ${mabi_flag} -Xcc -fno-pic -Xcc -fno-pie -Xcc -fno-exceptions -Xcc -fno-rtti
         
         -cxx-interoperability-mode=default
 
@@ -64,6 +64,7 @@ target_sources(${COMPONENT_LIB}
     PRIVATE
     Main.swift
     flag.swift
+    TFT.swift
 )
 
 add_custom_command(

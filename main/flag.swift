@@ -50,7 +50,7 @@ func wave(_ x: Int32, _ xmod: Double, _ sinmod: Double, _ loopcount: Int32) -> I
 	return Int32(sin(Double(x+loopcount) * xmod) * sinmod)
 }
 
-func waveFlag(_ flagID: Flag, on tft: inout TFT_eSPI, flagX: Int32, flagY: Int32, width: Int32, height: Int32, xmod: Double, sinmod: Double, loopcount: Int32) {
+func waveFlag(_ flagID: Flag, on tft: TFTDisplay, flagX: Int32, flagY: Int32, width: Int32, height: Int32, xmod: Double, sinmod: Double, loopcount: Int32) {
 	let flag = flagContents[flagID]!
 	let colors = flag.colors
 	let stripeCount = Int32(colors.count)
