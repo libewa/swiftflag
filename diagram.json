@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "author": "Linus",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-c3-devkitm-1",
+      "id": "esp",
+      "top": -56.1,
+      "left": -15.42,
+      "rotate": 180,
+      "attrs": {}
+    },
+    { "type": "wokwi-ili9341", "id": "lcd1", "top": -440.8, "left": -29.1, "attrs": {} }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "esp:5V.2", "lcd1:VCC", "red", [ "h9.6", "v-76.8", "h-67.2" ] ],
+    [ "esp:GND.5", "lcd1:GND", "black", [ "h19.2", "v-57.6", "h-67.2" ] ],
+    [ "esp:7", "lcd1:CS", "#8f4814", [ "h-16.78", "v-115.2", "h67.2" ] ],
+    [ "esp:RST", "lcd1:RST", "orange", [ "h28.8", "v-124.8", "h-57.6" ] ],
+    [ "esp:8", "lcd1:D/C", "green", [ "h-45.58", "v-124.8", "h115.2" ] ],
+    [ "esp:6", "lcd1:MOSI", "blue", [ "h-26.38", "v-86.4", "h105.61" ] ],
+    [ "esp:4", "lcd1:SCK", "violet", [ "v0", "h-7.18", "v-57.6", "h96" ] ],
+    [ "esp:5V.1", "lcd1:LED", "red", [ "h38.4", "v-105.6", "h-28.79" ] ],
+    [ "esp:5", "lcd1:MISO", "purple", [ "h-35.98", "v-124.8", "h144.01" ] ]
+  ],
+  "dependencies": {}
+}

@@ -68,4 +68,7 @@ class TFTDisplay {
     public func fillScreen(_ color: UInt32) {
         display.fillScreen(color)
     }
+    public func fillScreen(_ color: Int32) {
+        display.fillScreen(UInt32(color))
+    }
 }
