@@ -1,6 +1,6 @@
 # Register the app as an IDF component
 idf_component_register(
-    SRCS /dev/null # We don't have any C++ sources
+    SRCS tft_bridge.cpp
     PRIV_INCLUDE_DIRS "."
 )
 
@@ -64,7 +64,6 @@ target_sources(${COMPONENT_LIB}
     PRIVATE
     Main.swift
     flag.swift
-    TFT.swift
 )
 
 add_custom_command(
