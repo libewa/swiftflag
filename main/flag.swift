@@ -60,21 +60,21 @@ func waveFlag(_ flagID: Flag, flagX: Int32, flagY: Int32, width: Int32, height: 
 		for x: Int32 in flagX..<flagX + width {
 			let color = UInt32(flag.colors[Int((x-stripeWidth/2) / stripeWidth)])
 			let y = flagY + wave(x, xmod, sinmod, loopcount)
-			drawFastVLine(tft, x, y, height, color)
-			drawPixel(tft, x, y, UInt32(TFT_WHITE))
-			drawPixel(tft, x, y + height, UInt32(TFT_WHITE))
+			tft.drawFastVLine(x, y, height, color)
+			tft.drawPixel(x, y, UInt32(TFT_WHITE))
+			tft.drawPixel(x, y + height, UInt32(TFT_WHITE))
 		}
 	} else {
 		let stripeHeight = height / stripeCount
 		for x: Int32 in flagX..<flagX + width {
 			for i in 0..<stripeCount {
 				let y = flagY + i * stripeHeight + wave(x, xmod, sinmod, loopcount)
-				drawFastVLine(tft, x, y, stripeHeight, UInt32(colors[Int(i)]))
+				tft.drawFastVLine(x, y, stripeHeight, UInt32(colors[Int(i)]))
 			}
-			drawPixel(tft, x, flagY + wave(x, xmod, sinmod, loopcount), UInt32(TFT_WHITE))
-			drawPixel(tft, x, flagY + height + wave(x, xmod, sinmod, loopcount), UInt32(TFT_WHITE))
+			tft.drawPixel(x, flagY + wave(x, xmod, sinmod, loopcount), UInt32(TFT_WHITE))
+			tft.drawPixel(x, flagY + height + wave(x, xmod, sinmod, loopcount), UInt32(TFT_WHITE))
 		}
 	}
-	drawFastVLine(tft, flagX, flagY+wave(flagX, xmod, sinmod, loopcount), height, UInt32(TFT_WHITE))
-	drawFastVLine(tft, flagX+width, flagY+wave(flagX+width, xmod, sinmod, loopcount), height, UInt32(TFT_WHITE))
+	tft.drawFastVLine(flagX, flagY+wave(flagX, xmod, sinmod, loopcount), height, UInt32(TFT_WHITE))
+	tft.drawFastVLine(flagX+width, flagY+wave(flagX+width, xmod, sinmod, loopcount), height, UInt32(TFT_WHITE))
 }

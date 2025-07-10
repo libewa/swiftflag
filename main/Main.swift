@@ -13,24 +13,31 @@ let FLAG_H: Int32 = 50
 var loopcount = Int32(0)
 
 func setup() {
+    print("setup() called...")
     tft.`init`()
-    pinMode(1, UInt8(OUTPUT))
+    pinMode(1, UInt8(2))
+    print("setup() completed.")
 }
 
 func loop() {
-    fillScreen(tft, UInt32(TFT_BLACK))
+    print("Loop begin - loopcount: \(loopcount)")
+    tft.fillScreen(UInt32(TFT_BLACK))
     digitalWrite(1, UInt8(HIGH))
-    waveFlag(.enby, flagX: FLAG_X, flagY: FLAG_Y, width: FLAG_W, height: FLAG_H, xmod: 0.1, sinmod: 3, loopcount: loopcount)
+    //waveFlag(.enby, flagX: FLAG_X, flagY: FLAG_Y, width: FLAG_W, height: FLAG_H, xmod: 0.1, sinmod: 3, loopcount: loopcount)
 	delay(100)
     digitalWrite(1, UInt8(LOW))
     delay(100)
 	loopcount += 5
+    print("Loop end - loopcount: \(loopcount)")
 }
 
 @_cdecl("app_main")
 func main() {
+    print("Starting Arduino...")
+    initArduino()
+    print("Arduino initialized.")
     setup()
-    while true {
+    repeat {
         loop()
-    }
+    } while true
 }

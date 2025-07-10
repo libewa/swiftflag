@@ -1,6 +1,6 @@
 # Register the app as an IDF component
 idf_component_register(
-    SRCS tft_bridge.cpp
+    SRCS /dev/null
     PRIV_INCLUDE_DIRS "."
 )
 
