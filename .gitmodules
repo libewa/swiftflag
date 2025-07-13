@@ -1,6 +1,8 @@
 [submodule "components/arduino"]
 	path = components/arduino
 	url = https://github.com/espressif/arduino-esp32
+	branch = v2.0.14
 [submodule "components/TFT_eSPI"]
 	path = components/TFT_eSPI
 	url = https://github.com/libewa/TFT_eSPI
+	branch = ansitypes
