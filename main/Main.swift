@@ -14,6 +14,7 @@ let FLAG_H: Int32 = 50
 */
 var loopcount = Int32(0)
 var currentTone = 0
+var isFirstLoop = true
 
 var currentToneStart = UInt(0)
 var lastFlagUpdate = UInt(0)
@@ -24,14 +25,16 @@ func setup() {
     print("setup() called...")
     //tft.`init`()
     pinMode(pin: speakerPin, mode: .output)
-    delay(200)
+    delay(100)
+    noTone(speakerPin)
     print("setup() completed.")
 }
 
 func loop() {
-    if millis() - currentToneStart > tones[currentTone].duration.rawValue  {
+    if millis() - currentToneStart > tones[currentTone].duration.rawValue {
         noTone(speakerPin)
-        if !tones.indices.contains(currentTone+1) {
+        if !tones.indices.contains(currentTone+1) || isFirstLoop {
+            isFirstLoop = false
             currentTone = 0
         } else {
             currentTone += 1
