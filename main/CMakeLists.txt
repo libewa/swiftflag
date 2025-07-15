@@ -63,7 +63,9 @@ enable_language(Swift)
 target_sources(${COMPONENT_LIB}
     PRIVATE
     Main.swift
-    flag.swift
+    #flag.swift
+    pinMode.swift
+    song.swift
 )
 
 add_custom_command(

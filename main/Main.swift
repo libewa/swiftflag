@@ -1,3 +1,4 @@
+/*
 var tft = TFT_eSPI()
 
 extension TFT_eSPI {
@@ -10,25 +11,40 @@ let FLAG_X: Int32 = 10
 let FLAG_Y: Int32 = 10
 let FLAG_W: Int32 = 70
 let FLAG_H: Int32 = 50
+*/
 var loopcount = Int32(0)
+var currentTone = 0
+
+var currentToneStart = UInt(0)
+var lastFlagUpdate = UInt(0)
+
+let speakerPin: UInt8 = 1
 
 func setup() {
     print("setup() called...")
-    tft.`init`()
-    pinMode(1, UInt8(2))
+    //tft.`init`()
+    pinMode(pin: speakerPin, mode: .output)
     print("setup() completed.")
 }
 
 func loop() {
-    print("Loop begin - loopcount: \(loopcount)")
-    tft.fillScreen(UInt32(TFT_BLACK))
-    digitalWrite(1, UInt8(HIGH))
-    //waveFlag(.enby, flagX: FLAG_X, flagY: FLAG_Y, width: FLAG_W, height: FLAG_H, xmod: 0.1, sinmod: 3, loopcount: loopcount)
-	delay(100)
-    digitalWrite(1, UInt8(LOW))
-    delay(100)
-	loopcount += 5
-    print("Loop end - loopcount: \(loopcount)")
+    if millis() - currentToneStart > tones[currentTone].duration.rawValue  {
+        noTone(speakerPin)
+        if !tones.indices.contains(currentTone+1) {
+            currentTone = 0
+        } else {
+            currentTone += 1
+        }
+        currentToneStart = millis()
+        print("Starting \(tones[currentTone].duration.rawValue)ms tone \(tones[currentTone].freq)Hz")
+        tone(speakerPin, tones[currentTone].freq.rawValue)
+    }
+    if millis() - lastFlagUpdate > 200 {
+        lastFlagUpdate = millis()
+        //tft.fillScreen(UInt32(TFT_BLACK))
+        //waveFlag(.enby, flagX: FLAG_X, flagY: FLAG_Y, width: FLAG_W, height: FLAG_H, xmod: 0.1, sinmod: 3, loopcount: loopcount)
+        loopcount += 5
+    }
 }
 
 @_cdecl("app_main")
