@@ -23,7 +23,7 @@ func loop() {
             currentTone += 1
         }
         currentToneStart = millis()
-        print("Starting \(tones[currentTone].duration.rawValue)ms tone \(tones[currentTone].freq)Hz")
+        print("Starting \(tones[currentTone].duration.rawValue)ms tone \(tones[currentTone].freq.rawValue)Hz")
         tone(speakerPin, tones[currentTone].freq.rawValue)
     }
 }
