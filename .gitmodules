@@ -2,6 +2,3 @@
 	path = components/arduino
 	url = https://github.com/espressif/arduino-esp32
 	branch = v3.3.x
-#[submodule "components/TFT_eSPI"]
-#	path = components/TFT_eSPI
-#	url = https://github.com/Seeed-Studio/Seeed_Arduino_LCD
