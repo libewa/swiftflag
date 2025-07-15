@@ -24,6 +24,7 @@ func setup() {
     print("setup() called...")
     //tft.`init`()
     pinMode(pin: speakerPin, mode: .output)
+    delay(200)
     print("setup() completed.")
 }
 
